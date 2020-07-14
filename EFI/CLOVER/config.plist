@@ -29,7 +29,7 @@
 					<key>Comment</key>
 					<string>change _DSM to XDSM</string>
 					<key>Disabled</key>
-					<false/>
+					<true/>
 					<key>Find</key>
 					<data>X0RTTQ==</data>
 					<key>Replace</key>
@@ -60,6 +60,8 @@
 				<key>CStates</key>
 				<false/>
 				<key>PStates</key>
+				<false/>
+				<key>PluginType</key>
 				<false/>
 			</dict>
 		</dict>

@@ -5,13 +5,13 @@
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of SSDT-6-CpuSsdt.aml, Fri Jul 10 10:13:46 2020
+ * Disassembly of SSDT-6-CpuSsdt.aml, Mon Jul 13 20:32:55 2020
  *
  * Original Table Header:
  *     Signature        "SSDT"
  *     Length           0x00000E73 (3699)
  *     Revision         0x02
- *     Checksum         0x6D
+ *     Checksum         0x27
  *     OEM ID           "CpuRef"
  *     OEM Table ID     "CpuSsdt"
  *     OEM Revision     0x00003000 (12288)
@@ -51,25 +51,25 @@ DefinitionBlock ("", "SSDT", 2, "CpuRef", "CpuSsdt", 0x00003000)
         Name (SSDT, Package (0x15)
         {
             "CPU0IST ", 
-            0x873C9718, 
+            0x873D6718, 
             0x00000660, 
             "APIST   ", 
-            0x873C8618, 
+            0x873D5618, 
             0x000005AA, 
             "CPU0CST ", 
-            0x873C8C18, 
+            0x873D5C18, 
             0x0000037F, 
             "APCST   ", 
-            0x873CAA98, 
+            0x873D7A98, 
             0x00000119, 
             "CPU0HWP ", 
-            0x873CAF18, 
+            0x873D7F18, 
             0x0000008E, 
             "APHWP   ", 
-            0x873CA918, 
+            0x873D7918, 
             0x00000119, 
             "HWPLVT  ", 
-            0x873CAC18, 
+            0x873D7C18, 
             0x00000130
         })
         Name (\PDC0, 0x80000000)
@@ -86,7 +86,7 @@ DefinitionBlock ("", "SSDT", 2, "CpuRef", "CpuSsdt", 0x00003000)
     Scope (\_PR)
     {
         Name (CTPC, Zero)
-        OperationRegion (PNVS, SystemMemory, 0x81651000, 0x006C)
+        OperationRegion (PNVS, SystemMemory, 0x82030000, 0x006C)
         Field (PNVS, AnyAcc, Lock, Preserve)
         {
             PGRV,   8, 

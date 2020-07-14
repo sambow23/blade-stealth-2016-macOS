@@ -1,4 +1,23 @@
-
+/*
+ * Intel ACPI Component Architecture
+ * AML/ASL+ Disassembler version 20180427 (64-bit version)(RM)
+ * Copyright (c) 2000 - 2018 Intel Corporation
+ * 
+ * Disassembling to non-symbolic legacy ASL operators
+ *
+ * Disassembly of DSDT.aml, Mon Jul 13 20:32:54 2020
+ *
+ * Original Table Header:
+ *     Signature        "DSDT"
+ *     Length           0x00023285 (144005)
+ *     Revision         0x02
+ *     Checksum         0xA7
+ *     OEM ID           "ALASKA"
+ *     OEM Table ID     "A M I "
+ *     OEM Revision     0x01072009 (17244169)
+ *     Compiler ID      "INTL"
+ *     Compiler Version 0x20120913 (538052883)
+ */
 DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
 {
     /*
@@ -174,7 +193,7 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
     Name (TOPM, 0x00000000)
     Name (ROMS, 0xFFE00000)
     Name (VGAF, One)
-    OperationRegion (GNVS, SystemMemory, 0x87B78000, 0x0600)
+    OperationRegion (GNVS, SystemMemory, 0x87B83000, 0x0600)
     Field (GNVS, AnyAcc, Lock, Preserve)
     {
         OSYS,   16, 
@@ -4244,7 +4263,7 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
                     Offset (0x08)
                 }
 
-                OperationRegion (CPSB, SystemMemory, 0x873D7F18, 0x10)
+                OperationRegion (CPSB, SystemMemory, 0x873E4F18, 0x10)
                 Field (CPSB, AnyAcc, NoLock, Preserve)
                 {
                     RTCX,   1, 
@@ -9884,7 +9903,7 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
         }
     }
 
-    Name (PNVB, 0x87B79C98)
+    Name (PNVB, 0x87B84C98)
     Name (PNVL, 0x0204)
     If (LEqual (ECR1, One))
     {
@@ -14140,9 +14159,17 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
 
             Method (_STA, 0, NotSerialized)  // _STA: Status
             {
-                
-                Return (0x0F)
+                If (LEqual (SBRG, Zero))
+                {
+                    Return (Zero)
+                }
 
+                If (LEqual (GPEN, Zero))
+                {
+                    Return (Zero)
+                }
+
+                Return (0x0F)
             }
         }
     }
@@ -14954,7 +14981,7 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
 
                 If (LEqual (SDM0, Zero))
                 {
-                    Return (ConcatenateResTemplate (SBFB, SBFI))
+                    Return (ConcatenateResTemplate (SBFB, SBFG))
                 }
 
                 Return (ConcatenateResTemplate (SBFB, SBFI))
@@ -15190,7 +15217,7 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
 
                 If (LEqual (SDM1, Zero))
                 {
-                    Return (ConcatenateResTemplate (SBFB, SBFI))
+                    Return (ConcatenateResTemplate (SBFB, SBFG))
                 }
 
                 Return (ConcatenateResTemplate (SBFB, SBFI))
@@ -17537,17 +17564,17 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
                     Store (0x07D6, OSYS)
                 }
 
-                If (_OSI ("Windows 2009"))
+                If(LOr(_OSI("Darwin"),_OSI("Windows 2009")))
                 {
                     Store (0x07D9, OSYS)
                 }
 
-                If (_OSI ("Windows 2012"))
+                If(LOr(_OSI("Darwin"),_OSI("Windows 2012")))
                 {
                     Store (0x07DC, OSYS)
                 }
 
-                If (_OSI ("Windows 2013"))
+                If(LOr(_OSI("Darwin"),_OSI("Windows 2013")))
                 {
                     Store (0x07DD, OSYS)
                 }
@@ -34411,8 +34438,6 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
                 }
                 Return(TEMP)
             }
-            
-            
         }
 
         Device (AC0)
@@ -35404,6 +35429,16 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
         }
     }
     Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }
-    
+    Scope (_SB)
+    {
+        Device (PNLF)
+        {
+            Name (_ADR, Zero)
+            Name (_HID, EisaId ("APP0002"))
+            Name (_CID, "backlight")
+            Name (_UID, 10)
+            Name (_STA, 0x0B)
+        }
+    }
 }
 

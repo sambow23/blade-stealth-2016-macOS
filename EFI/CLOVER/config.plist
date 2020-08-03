@@ -83,6 +83,13 @@
 		<key>XMPDetection</key>
 		<false/>
 	</dict>
+	<key>CPU</key>
+	<dict>
+		<key>HWPEnable</key>
+		<false/>
+		<key>UseARTFrequency</key>
+		<false/>
+	</dict>
 	<key>Devices</key>
 	<dict>
 		<key>Audio</key>
@@ -159,19 +166,19 @@
 			<key>ATI</key>
 			<false/>
 			<key>Intel</key>
-			<false/>
+			<true/>
 			<key>NVidia</key>
 			<false/>
 		</dict>
 		<key>ig-platform-id</key>
-		<string>0x19160000</string>
+		<string>0x193B0005</string>
 	</dict>
 	<key>KernelAndKextPatches</key>
 	<dict>
 		<key>#FakeCPUID</key>
 		<string>0x010676</string>
 		<key>AppleIntelCPUPM</key>
-		<true/>
+		<false/>
 		<key>AppleRTC</key>
 		<true/>
 		<key>FakeCPUID</key>
@@ -179,13 +186,41 @@
 		<key>KernelCpu</key>
 		<false/>
 		<key>KernelLapic</key>
-		<false/>
+		<true/>
 		<key>KernelPm</key>
 		<true/>
 		<key>KernelXCPM</key>
 		<false/>
 		<key>KextsToPatch</key>
 		<array>
+			<dict>
+				<key>Comment</key>
+				<string>Prevent Apple I2C kexts from attaching to I2C controllers, credit CoolStar</string>
+				<key>Disabled</key>
+				<false/>
+				<key>Find</key>
+				<data>SU9LaXQ=</data>
+				<key>InfoPlistPatch</key>
+				<true/>
+				<key>Name</key>
+				<string>com.apple.driver.AppleIntelLpssI2CController</string>
+				<key>Replace</key>
+				<data>SU9LaXM=</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Prevent Apple I2C kexts from attaching to I2C controllers, credit CoolStar</string>
+				<key>Disabled</key>
+				<false/>
+				<key>Find</key>
+				<data>SU9LaXQ=</data>
+				<key>InfoPlistPatch</key>
+				<true/>
+				<key>Name</key>
+				<string>com.apple.driver.AppleIntelLpssI2C</string>
+				<key>Replace</key>
+				<data>SU9LaXM=</data>
+			</dict>
 			<dict>
 				<key>Comment</key>
 				<string>External icons patch</string>
@@ -221,7 +256,9 @@
 		<key>BooterConfig</key>
 		<string>0x28</string>
 		<key>CsrActiveConfig</key>
-		<string>0x67</string>
+		<string>0x00</string>
+		<key>ROM</key>
+		<data>yKznx/Wj</data>
 	</dict>
 	<key>SMBIOS</key>
 	<dict>

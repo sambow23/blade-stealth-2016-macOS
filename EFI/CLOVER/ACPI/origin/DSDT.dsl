@@ -5,13 +5,13 @@
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of DSDT.aml, Mon Jul 13 20:32:54 2020
+ * Disassembly of DSDT.aml, Fri Jul 31 20:28:16 2020
  *
  * Original Table Header:
  *     Signature        "DSDT"
  *     Length           0x00023285 (144005)
  *     Revision         0x02
- *     Checksum         0xA7
+ *     Checksum         0x19
  *     OEM ID           "ALASKA"
  *     OEM Table ID     "A M I "
  *     OEM Revision     0x01072009 (17244169)
@@ -152,7 +152,7 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
     Name (FUPS, 0x04)
     Name (FUWS, 0x03)
     Name (FEMD, 0x04)
-    Name (TBUS, 0xFF)
+    Name (TBUS, 0x02)
     Name (TBSW, 0xBC)
     Name (ASSB, Zero)
     Name (AOTB, Zero)
@@ -193,7 +193,7 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
     Name (TOPM, 0x00000000)
     Name (ROMS, 0xFFE00000)
     Name (VGAF, One)
-    OperationRegion (GNVS, SystemMemory, 0x87B83000, 0x0600)
+    OperationRegion (GNVS, SystemMemory, 0x37B82000, 0x0600)
     Field (GNVS, AnyAcc, Lock, Preserve)
     {
         OSYS,   16, 
@@ -4263,7 +4263,7 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
                     Offset (0x08)
                 }
 
-                OperationRegion (CPSB, SystemMemory, 0x873E4F18, 0x10)
+                OperationRegion (CPSB, SystemMemory, 0x373D3F18, 0x10)
                 Field (CPSB, AnyAcc, NoLock, Preserve)
                 {
                     RTCX,   1, 
@@ -9903,7 +9903,7 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
         }
     }
 
-    Name (PNVB, 0x87B84C98)
+    Name (PNVB, 0x37B83C98)
     Name (PNVL, 0x0204)
     If (LEqual (ECR1, One))
     {
@@ -15155,7 +15155,7 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
 
                 If (LEqual (SDS1, 0x06))
                 {
-                    Store ("15320205", _HID)
+                    Store ("SYNA0000", _HID)
                     Store (TPLH, HID2)
                     Store (TPLB, BADR)
                     If (LEqual (TPLS, Zero))
@@ -17564,17 +17564,17 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
                     Store (0x07D6, OSYS)
                 }
 
-                If(LOr(_OSI("Darwin"),_OSI("Windows 2009")))
+                If (_OSI ("Windows 2009"))
                 {
                     Store (0x07D9, OSYS)
                 }
 
-                If(LOr(_OSI("Darwin"),_OSI("Windows 2012")))
+                If (_OSI ("Windows 2012"))
                 {
                     Store (0x07DC, OSYS)
                 }
 
-                If(LOr(_OSI("Darwin"),_OSI("Windows 2013")))
+                If (_OSI ("Windows 2013"))
                 {
                     Store (0x07DD, OSYS)
                 }
@@ -17898,7 +17898,7 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
         }
     }
 
-    Name (TDMA, 0x80000000)
+    Name (TDMA, 0x00000000)
     Scope (_GPE)
     {
         Method (OSUP, 1, Serialized)
@@ -18444,9 +18444,9 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
             Return (One)
         }
 
-        Method (XTBT, 0, NotSerialized)
+        Method (_E45, 0, NotSerialized)  // _Exx: Edge-Triggered GPE
         {
-            ADBG ("XTBT")
+            ADBG ("_E45")
             If (LEqual (CF2T, One))
             {
                 ADBG ("Clear")
@@ -18529,7 +18529,7 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
             NTFY ()
             Sleep (0x10)
             Release (OSUM)
-            ADBG ("End-of-XTBT")
+            ADBG ("End-of-_E45")
         }
 
         Method (TINI, 0, NotSerialized)
@@ -18563,7 +18563,7 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
         Method (THDR, 0, Serialized)
         {
             ADBG ("THDR")
-            \_GPE.XTBT ()
+            \_GPE._E45 ()
         }
     }
 
@@ -34784,11 +34784,6 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
                 Return (0x0F)
             }
 
-            Method (_LID, 0, NotSerialized)  // _LID: Lid Status
-            {
-                Return (LIDS)
-            }
-
             Method (_PSW, 1, NotSerialized)  // _PSW: Power State Wake
             {
                 If (Arg0){}
@@ -35429,16 +35424,5 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
         }
     }
     Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }
-    Scope (_SB)
-    {
-        Device (PNLF)
-        {
-            Name (_ADR, Zero)
-            Name (_HID, EisaId ("APP0002"))
-            Name (_CID, "backlight")
-            Name (_UID, 10)
-            Name (_STA, 0x0B)
-        }
-    }
 }
 

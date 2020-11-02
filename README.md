@@ -4,6 +4,9 @@ This readme is based on red-green/razer_blade_stealth_hackintosh and adapted to 
 Razer Blade Stealth 2016 (Skylake) 
 ===
 
+![ABTM](https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/abtm.png)
+
+
 Intro
 ---
 

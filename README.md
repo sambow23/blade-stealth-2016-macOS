@@ -63,7 +63,7 @@ TL;DR -
 CPU
 -----
 
-The [i7-6500U](https://ark.intel.com/content/www/us/en/ark/products/88194/intel-core-i7-6500u-processor-4m-cache-up-to-3-10-ghz.html) works well out of the box. Added CPUFriend, CPUFriendDataProvider.kext and CpuTscSync.kext to get it to idle below 1.20GHz (idles at 800MHz), Turbo goes up to 3.1GHz as usual
+The [i7-6500U](https://ark.intel.com/content/www/us/en/ark/products/88194/intel-core-i7-6500u-processor-4m-cache-up-to-3-10-ghz.html) works well out of the box. Idles below 1.20GHz (idles at 800MHz), Turbo goes up to 3.1GHz as usual. Used `CpuTscSync.kext` to fix sleep issues
 
 GPU
 -----
@@ -81,6 +81,9 @@ Wifi and Bluetooth
 -----
 
 The included Killer wifi/BT card will also not work in macOS as it lacks drivers. I replaced mine with a DW1560 and it works completely out of the box, including Bluetooth, no special setup needed
+
+Bluetooth audio seems to work flawlessly, tested with `Samsung Galaxy Buds+` and `Sennheiser Momentum 2 Wireless`
+Seem to use proper codecs out of the box, no latency or sound quality issues.
 
 Sleep
 -----
@@ -107,8 +110,8 @@ Speaker, Headphone and Mic inputs and outputs work out of the box and no distort
 
 USB
 -----
-USB worked out of the box with and without `USBInjectAll.kext`
-I had to remove `USBInjectAll.kext`, use `Skylake Instawake` patches on my DSDT via MacASL, and remap my ports with [USBMap](https://github.com/corpnewt/USBMap), creating a `USBMap.kext`. I did some extra tweaks such as disabling the webcam and touchscreen as I do not use them. 
+USB works out of the box
+I had to remove `USBInjectAll.kext`, use `Skylake Instawake` patches on my DSDT via MacASL, and remap my ports with [USBMap](https://github.com/corpnewt/USBMap), creating a `USBMap.kext` (Does disable touchscreen and webcam)
 
 Display Outs
 -----

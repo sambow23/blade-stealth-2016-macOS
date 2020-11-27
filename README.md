@@ -87,6 +87,7 @@ The included Killer wifi/BT card will also not work in macOS as it lacks drivers
 
 Bluetooth audio seems to work flawlessly, tested with `Samsung Galaxy Buds+` and `Sennheiser Momentum 2 Wireless`
 Seem to use proper codecs out of the box, no latency or sound quality issues.
+
 ![BT-audio](https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/bt-audio.png)
 
 Sleep

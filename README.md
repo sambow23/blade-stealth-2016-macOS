@@ -64,6 +64,7 @@ CPU
 -----
 
 The [i7-6500U](https://ark.intel.com/content/www/us/en/ark/products/88194/intel-core-i7-6500u-processor-4m-cache-up-to-3-10-ghz.html) works well out of the box. Idles below 1.20GHz (idles at 800MHz), Turbo goes up to 3.1GHz as usual. Used `CpuTscSync.kext` to fix sleep issues
+![cpu](https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/cpu.png)
 
 GPU/Display
 -----
@@ -77,6 +78,7 @@ SSD
 -----
 
 Thankfully my Samsung PM951 works out of the box but I belive power management isnt working correctly, even with NVMeFix.kext the battery drains very quickly and there is no sign of the kext detecting my SSD in `IORegristyExplorer`. There is probably a solution I have not looked at yet.
+![ssd](https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/ssd.png)
 
 Wifi and Bluetooth
 -----

@@ -64,6 +64,7 @@ CPU
 -----
 
 The [i7-6500U](https://ark.intel.com/content/www/us/en/ark/products/88194/intel-core-i7-6500u-processor-4m-cache-up-to-3-10-ghz.html) works well out of the box. Idles below 1.20GHz (idles at 800MHz), Turbo goes up to 3.1GHz as usual. Used `CpuTscSync.kext` to fix sleep issues
+
 ![cpu](https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/cpu.png)
 
 GPU/Display

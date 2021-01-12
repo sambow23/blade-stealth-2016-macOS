@@ -172,9 +172,9 @@ Stuff in this repo
 
 The `EFI` Folder has my unmaintained Clover folder, it should boot Catalina fine but a lot of things don't work or as not as well.
 
-The `OC` Folder contains the stable, current version of OpenCore to boot macOS Catalina on this machine
+The `OC` Folder contains the stable, current version of OpenCore to boot macOS Big Sur on this machine
 
-The `OC-Bs` Folder contains the some-what stable, experimental version of OpenCore to boot macOS Big Sur Public Beta on this machine. (Should have feature parity with the Catalina version)
+The `OC-cat` Folder contains the version of OpenCore for macOS Catalina (which is now deprecated), keeping this for reference/archiving mainly.
 
 `OC-DSDT` - Contains initial DSDT for OpenCore, unmaintained for now
 

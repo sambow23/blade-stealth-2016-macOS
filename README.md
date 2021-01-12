@@ -1,6 +1,3 @@
-This readme is based on red-green/razer_blade_stealth_hackintosh and adapted to this model
-===
-
 Razer Blade Stealth 2016 (Skylake) 
 ===
 

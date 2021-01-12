@@ -40,17 +40,18 @@ TL;DR -
 - Trackpad including gestures
 - Sound through headphone jack and speakers (including persistence through sleep)
 - Internal microphone
-- All USB ports except the USB-C
+- All USB ports
 - Screen full resolution, brightness
 - HDMI
 - Battery precentage, charging
 - SideCar over USB and wireless (in Catalina/Big Sur)
 - iMessage and iCloud
 - Displayport output on the TB3 port
+- AirPlay
 
-**What does not work:**
+**What does not work/disabled:**
 - Internal webcam with Facetime (Disabled)
-- Touchscreen (Disabld)
+- Touchscreen (Disabled)
 
 **Not tested:**
 
@@ -65,7 +66,7 @@ CPU
 
 The [i7-6500U](https://ark.intel.com/content/www/us/en/ark/products/88194/intel-core-i7-6500u-processor-4m-cache-up-to-3-10-ghz.html) works well out of the box. Idles below 1.20GHz (idles at 800MHz), Turbo goes up to 3.1GHz as usual. Used `CpuTscSync.kext` to fix sleep issues
 
-![cpu](https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/cpu.png)
+<img src="https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/cpu.png" width="410">
 
 GPU/Display
 -----
@@ -73,7 +74,8 @@ GPU/Display
 GPU worked out of the box with the default `platform-id`, including full video decode and all supported resolutions, HiDPI does work but you need to manually enable it and patch in support with https://github.com/xzhih/one-key-hidpi
 
 Screen will most likely be black on wake, can be fixed by re-opening the lid.
-![display](https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/display.png)
+
+<img src="https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/display.png" width="700">
 
 SSD
 -----
@@ -85,13 +87,17 @@ Wifi and Bluetooth
 -----
 
 The included Killer wifi/BT card will also not work in macOS as it lacks drivers. I replaced mine with a DW1560 and it works completely out of the box, including Bluetooth, no special setup needed
-![BT](https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/bt.png)
-![wifi](https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/wifi.png)
+<img src="https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/bt.png" width="700">
+<img src="https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/wifi.png" width="700">
 
 Bluetooth audio seems to work flawlessly, tested with `Samsung Galaxy Buds+` and `Sennheiser Momentum 2 Wireless`
 Seem to use proper codecs out of the box, no latency or sound quality issues.
 
-![BT-audio](https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/bt-audio.png)
+<img src="https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/bt-audio.png" width="350">
+
+AirPlay also seems to work out of the box, tested on a PC running `AirServer` and a Roku with AirPlay support.
+<img src="https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/airplay.png" width="500">
+
 
 Sleep
 -----
@@ -109,15 +115,15 @@ Trackpad
 
 It's a Synaptics 15320205 multitouch I2C trackpad, I use a older test version of VoodooI2C plus VoodooI2CSynaptics to fix some weird stuttering and functionality after sleep with an SSDT-XOSI to enable the I2C controller. All the native multitouch gestures work, though gesture detection is a bit hit-or-miss and sensitivity is extremely high by default, can be fixed by lowering the sensitivity in Touchpad settings.
 Sometimes when changing the VoodooI2C version, it wont work immediately, you just need to re-do kext cache even if it's not installed in your extensions directory.
-![trackpad](https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/trackpad.png)
+<img src="https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/trackpad.png" width="700">
 
 Sound
 -----
 
 Sound card is the Realtek ALC298. Works perfectly with [AppleALC](https://github.com/acidanthera/AppleALC/wiki/Supported-codecs) with `layout-id=22`.
 Speaker, Headphone and Mic inputs and outputs work out of the box and no distorted audio after sleep.
-![output](https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/output.png)
-![input](https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/input.png)
+<img src="https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/output.png" width="700">
+<img src="https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/input.png" width="700">
 
 USB
 -----
@@ -139,6 +145,7 @@ Battery
 
 Using a DSDT patch in the MaciASL patch repo named "bat - Razer Blade (2014)", and SMCBatteryManager, I was able to get battery status and precentage working. I tried red-green's SSDT as His 2018 Blade uses the same battery label but I guess his ACPI is entirely different than mine so it does not work in my case.
 ![battery](https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/battery.png)
+<img src="https://github.com/sambow23/blade-stealth-2016-macOS/blob/master/images/battery2.png" width="700">
 
 
 Keyboard Illumination
